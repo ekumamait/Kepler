@@ -1,0 +1,38 @@
+<div (mouseover)="toggleFooterContentDisplay('open')" (mouseleave)="toggleFooterContentDisplay('closed')" class="footer-container">
+  <div>
+    <mat-icon >phone</mat-icon>
+    <div [@openClose]="animationStatus" class="footer-text">
+      <p>P 773.775.6697</p>
+      <p>F 773.763.7331</p>
+      <p style="color: #f47920;">PRIMARY SUPPORT HOURS</p>
+      <p>Mondays to Fridays 8am - 7pm CST</p>
+      <p>Saturdays 8am - 5pm CST</p>
+    </div>
+  </div>
+  <div>
+    <mat-icon>email</mat-icon>
+    <div [@openClose]="animationStatus" class="footer-text">
+      <p style="color: #f47920;">simple@SimpleLaboratories.com</p>
+    </div>
+  </div>
+  <div>
+    <mat-icon>
+      location_on
+    </mat-icon>
+    <div [@openClose]="animationStatus" class="footer-text">
+      <p style="color: #f47920;">SIMPLE LABORATORIES HQ</p>
+      <p>we're a Chicago lab!</p>
+      <p>5960 N. Milwaukee Ave</p>
+      <p>Chicago, IL 60646</p>
+      <p style="color: #f47920; margin-top: 20px">PATIENT SERVICE CENTERS</p>
+      <p>located throughout Illinois &</p>
+      <p>Northwest Indiana</p>
+    </div>
+  </div>
+  <div>
+    <mat-icon>search</mat-icon>
+    <div [@openClose]="animationStatus" class="footer-text">
+      <p style="color: #f47920;">SEARCH FOR TEST</p>
+    </div>
+  </div>
+</div>

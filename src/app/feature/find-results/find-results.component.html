@@ -1,0 +1,60 @@
+<app-wrapper [display]="true" [activeMenuTitle]="'find results'">
+  <section>
+    <div class="search-wrapper top">
+      <input type="text" [(ngModel)]="searchField" (keyup)="onSearch(searchField)" placeholder="Name, DOB (mm/dd/yyyy), ID, or Accession">
+      <mat-icon matSuffix>search</mat-icon>
+    </div>
+    <div class="search-wrapper bottom">
+      <input type="text" placeholder="DOS (mm/dd/yyyy - mm/dd/yyyy)">
+      <mat-icon matSuffix>search</mat-icon>
+    </div>
+    <div class="info-container">
+      <mat-icon matSuffix>info</mat-icon>
+      Can't find who you're looking for? Please call customer service at 773.775.6697.
+    </div>
+    <div *ngIf="displayTable" class="mat-elevation-z8">
+      <table *ngIf="displayTable" class="data-table" [fixedLayout]="true" mat-table [dataSource]="testResultsDataSource" >
+        <!-- Patient ID Column -->
+        <ng-container matColumnDef="ID">
+          <th mat-header-cell *matHeaderCellDef>Patient ID</th>
+          <td mat-cell *matCellDef="let element"> {{element.ID}} </td>
+        </ng-container>
+
+        <!-- Last Name Column -->
+        <ng-container matColumnDef="LNAME">
+          <th mat-header-cell *matHeaderCellDef>Last Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.LNAME}} </td>
+        </ng-container>
+
+        <!-- First Name Column -->
+        <ng-container matColumnDef="FNAME">
+          <th mat-header-cell *matHeaderCellDef>First Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.FNAME}} </td>
+        </ng-container>
+
+        <!-- Middle Name Column -->
+        <ng-container matColumnDef="MNAME">
+          <th mat-header-cell *matHeaderCellDef>Middle Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.MNAME}} </td>
+        </ng-container>
+
+        <!-- DOB Column -->
+        <ng-container matColumnDef="DOB">
+          <th mat-header-cell *matHeaderCellDef>DOB</th>
+          <td mat-cell *matCellDef="let element"> {{element.DOB}} </td>
+        </ng-container>
+
+        <!-- Address Column -->
+        <ng-container matColumnDef="STREET">
+          <th mat-header-cell *matHeaderCellDef>Address</th>
+          <td mat-cell *matCellDef="let element"> {{element.STREET}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="testResultsDisplayColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: testResultsDisplayColumns;"></tr>
+
+      </table>
+      <mat-paginator  #paginator3 [pageSizeOptions]="[5, 10, 15, 20, 50]" showFirstLastButtons></mat-paginator>
+    </div>
+  </section>
+</app-wrapper>

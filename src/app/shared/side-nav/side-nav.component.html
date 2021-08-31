@@ -1,0 +1,93 @@
+<mat-sidenav-container [class]="!display ? 'drawer-container-with-background-img' : ''" class="drawer-container">
+  <mat-sidenav [opened]="showDrawer" class="sidenav" mode="side">
+    <mat-list>
+      <mat-list-item (click)="goToPage('https://www.simplelaboratories.com/')">Home</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header (click)="goToPage('https://www.simplelaboratories.com/patients/')">
+            Welcome Patients
+          </mat-expansion-panel-header>
+          <mat-divider></mat-divider>
+          <mat-list-item (click)="goToPage('https://www.simplelaboratories.com/patients/patients-service-centers/')">Patient Service Centers</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item (click)="goToPage('https://www.simplelaboratories.com/patients/patient-service-centers-guide/')">Patient Service Centers Guide</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item (click)="goToPage('https://www.simplelaboratories.com/patients/patient-survey/')">Patient Survey</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item (click)="goToPage('https://www.simplelaboratories.com/patients/payonline/')">Pay Online</mat-list-item>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-divider></mat-divider>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header (click)="goToPage('https://www.simplelaboratories.com/hello-healthcare-professionals/')">
+            Hello Healthcare Professionals
+          </mat-expansion-panel-header>
+          <mat-divider></mat-divider>
+          <mat-list-item (click)="goToPage('https://www.simplelaboratories.com/hello-healthcare-professionals/tools/')">Tools</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item (click)="goToPage('https://www.simplelaboratories.com/hello-healthcare-professionals/new-to-simple/')">New To Simple</mat-list-item>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-divider></mat-divider>
+      <mat-list-item (click)="goToPage('https://www.simplelaboratories.com/pleased-to-meet-you-payers/')">Pleased to meet you payers</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item (click)="goToPage('https://www.simplelaboratories.com/the-simple-price/')">The simple price</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header (click)="goToPage('https://www.simplelaboratories.com/about-us/')">
+            Keeping it simple
+          </mat-expansion-panel-header>
+          <mat-divider></mat-divider>
+          <mat-list-item (click)="goToPage('https://www.simplelaboratories.com/about-us/our-people/')">Our People</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item (click)="goToPage('https://www.simplelaboratories.com/about-us/ethics-and-compliance/')">Ethics + Compliance</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item (click)="goToPage('https://www.simplelaboratories.com/about-us/join-us/')">Join us</mat-list-item>
+          <mat-divider ></mat-divider>
+          <mat-list-item (click)="goToPage('https://www.simplelaboratories.com/about-us/insurance-provider-list/')">Insurance Provider List</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item (click)="goToPage('https://www.simplelaboratories.com/about-us/it-emrehr-integration/')">IT + EMR/EHR Integration</mat-list-item>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-divider></mat-divider>
+      <mat-list-item (click)="goToPage('https://www.simplelaboratories.com/contact-us/')">Contact Us</mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="sidenav-content">
+    <div *ngIf="display" class="menu-banner">
+      <div *ngIf="displayMenuContainer; else createOrderStepper" class="menu-container">
+        <ng-container *ngFor="let item of menu">
+          <div (click)="item.onItemClick()" (mouseover)="activateHover(item.name)" (mouseleave)="deactivateHover()" class="menu-item">
+            <img [src]="item.routeLink === router.url || hoverName === item.name ? item.activeIcon : item.iconLink" [alt]="item.name">
+            <span [ngClass]="{'active': item.routeLink === router.url}">{{item.name}}</span>
+          </div>
+        </ng-container>
+
+      </div>
+    </div>
+    <div *ngIf="display && displayMenuContainer" class="page-title">
+      <h2>{{activeMenuTitle}}</h2>
+    </div>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+<ng-template #createOrderStepper>
+  <div class="stepper-container">
+    <ng-container *ngFor="let item of stepperSteps">
+      <div (click)="item.onItemClick()" class="stepper-item">
+          <span [ngClass]="{'finished-or-current': item.finishedOrCurrent}" class="icon-sphere">
+            <mat-icon>{{item.icon}}</mat-icon>
+          </span>
+          <span class="item-name">
+            {{item.name}}
+          </span>
+      </div>
+    </ng-container>
+  </div>
+</ng-template>

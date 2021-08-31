@@ -1,0 +1,878 @@
+<div class="create-patient-container">
+  <ng-container [ngSwitch]="step">
+    <ng-container *ngSwitchCase="'select patient'">
+      <div class="menu-container">
+        <ng-container *ngFor="let menuItem of menu">
+          <div class="menu-item-container" (click)="changeDisplaySection(menuItem.name)" [ngClass]="{'active-menu-item': menuItem.active}">
+            <img [src]="menuItem.active?menuItem.activeIcon:menuItem.icon" alt="icon">
+            <span>{{menuItem.name}}</span>
+          </div>
+        </ng-container>
+      </div>
+      <div class="form-container" [hidden]="displaySection !== 'New Patient Profile'">
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input [(ngModel)]="firstName" name="firstName" matInput>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Middle Name</mat-label>
+            <input [(ngModel)]="middleName" name="middleName" matInput>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input [(ngModel)]="lastName" name="lastName" matInput>
+          </mat-form-field>
+          <div class="date-and-gender">
+            <mat-form-field appearance="outline">
+              <mat-label>DOB</mat-label>
+              <input [(ngModel)]="dob" matInput name="dob" [matDatepicker]="picker">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Gender</mat-label>
+              <mat-select [(ngModel)]="selectedValue" name="selectedValue">
+                <mat-option *ngFor="let item of gender" [value]="item.value">
+                  {{item.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <mat-form-field appearance="outline">
+            <mat-label>Alternative ID</mat-label>
+            <input [(ngModel)]="alternativeID" name="alternativeID" matInput>
+          </mat-form-field>
+          <div class="btn-section">
+            <button mat-button>Reset</button>
+            <button mat-flat-button color="#f47920">Save + Continue</button>
+          </div>
+        </form>
+      </div>
+      <div class="form-container" [hidden]=" displaySection !== 'Contact Info'">
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label>Address</mat-label>
+            <input [(ngModel)]="address" name="address" matInput>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Apt, Unit, etc</mat-label>
+            <input [(ngModel)]="aptUnit" name="aptUnit" matInput>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>City</mat-label>
+            <input [(ngModel)]="city" name="city" matInput>
+          </mat-form-field>
+          <div class="date-and-gender">
+            <mat-form-field appearance="outline">
+              <mat-label>State</mat-label>
+              <mat-select [(ngModel)]="selectedState" name="selectedValue">
+                <mat-option *ngFor="let item of states" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Zip</mat-label>
+              <input [(ngModel)]="zip" name="zip" matInput>
+            </mat-form-field>
+          </div>
+          <mat-form-field appearance="outline">
+            <mat-label>Phone</mat-label>
+            <input [(ngModel)]="phone" name="phone" matInput placeholder="{{ '0000000000' | phone }}">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input [(ngModel)]="email" name="email" matInput>
+          </mat-form-field>
+          <div class="btn-section">
+            <button mat-button>Reset</button>
+            <button mat-flat-button color="#f47920">Save + Continue</button>
+          </div>
+        </form>
+      </div>
+      <div class="form-container" [hidden]=" displaySection !== 'Guarantor/Insurance Info'">
+        <div class="check-container">
+          <mat-checkbox [(ngModel)]="noInsurance" name="noInsurance" class="example-margin"></mat-checkbox>
+          <span>No Insurance</span>
+        </div>
+        <mat-accordion class="insurance-input">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Guarantor
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-form-field appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input [(ngModel)]="firstName" name="firstName" matInput>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input [(ngModel)]="lastName" name="lastName" matInput>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Relation</mat-label>
+              <mat-select [(ngModel)]="selectedRelation" name="selectedRelation">
+                <mat-option *ngFor="let item of relationArray" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Phone</mat-label>
+              <input matInput >
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Address</mat-label>
+              <input matInput>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Apt, Unit, etc</mat-label>
+              <input [(ngModel)]="aptUnit" name="aptUnit" matInput>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>City</mat-label>
+              <input [(ngModel)]="city" name="city" matInput>
+            </mat-form-field>
+
+            <div class="date-and-gender">
+              <mat-form-field appearance="outline">
+                <mat-label>State</mat-label>
+                <mat-select [(ngModel)]="selectedState" name="selectedValue">
+                  <mat-option *ngFor="let item of states" [value]="item">
+                    {{item}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Zip</mat-label>
+                <input [(ngModel)]="zip" name="zip" matInput>
+              </mat-form-field>
+            </div>
+
+          </mat-expansion-panel>
+          <mat-expansion-panel [disabled]="noInsurance">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Primary Insurance
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Primary Insurance Company</mat-label>
+              <mat-select>
+                <ng-container *ngFor="let insurance of insurances">
+                  <mat-option [value]="insurance?.CODE">{{insurance?.CODE}} {{insurance?.NAME}}</mat-option>
+                </ng-container>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Member ID</mat-label>
+              <input matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Group ID</mat-label>
+              <input matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Relation</mat-label>
+              <mat-select [(ngModel)]="selectedRelation" name="selectedRelation">
+                <mat-option *ngFor="let item of relationArray" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <fieldset>
+              <legend>Insured</legend>
+              <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input [(ngModel)]="firstName" name="firstName" matInput>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input [(ngModel)]="lastName" name="lastName" matInput>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Relation</mat-label>
+                <mat-select [(ngModel)]="selectedRelation" name="selectedRelation">
+                  <mat-option *ngFor="let item of relationArray" [value]="item">
+                    {{item}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Address</mat-label>
+                <input matInput>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Apt, Unit, etc</mat-label>
+                <input [(ngModel)]="aptUnit" name="aptUnit" matInput>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>City</mat-label>
+                <input [(ngModel)]="city" name="city" matInput>
+              </mat-form-field>
+
+              <div class="date-and-gender">
+                <mat-form-field appearance="outline">
+                  <mat-label>State</mat-label>
+                  <mat-select [(ngModel)]="selectedState" name="selectedValue">
+                    <mat-option *ngFor="let item of states" [value]="item">
+                      {{item}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Zip</mat-label>
+                  <input [(ngModel)]="zip" name="zip" matInput>
+                </mat-form-field>
+              </div>
+            </fieldset>
+          </mat-expansion-panel>
+          <mat-expansion-panel [disabled]="noInsurance">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Secondary insurance
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Secondary Insurance Company</mat-label>
+              <mat-select>
+                <ng-container *ngFor="let insurance of insurances">
+                  <mat-option [value]="insurance?.CODE">{{insurance?.CODE}} {{insurance?.NAME}}</mat-option>
+                </ng-container>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Member ID</mat-label>
+              <input matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Group ID</mat-label>
+              <input matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Relation</mat-label>
+              <mat-select [(ngModel)]="selectedRelation" name="selectedRelation">
+                <mat-option *ngFor="let item of relationArray" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <fieldset>
+              <legend>Insured</legend>
+              <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input [(ngModel)]="firstName" name="firstName" matInput>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input [(ngModel)]="lastName" name="lastName" matInput>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Relation</mat-label>
+                <mat-select [(ngModel)]="selectedRelation" name="selectedRelation">
+                  <mat-option *ngFor="let item of relationArray" [value]="item">
+                    {{item}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Address</mat-label>
+                <input matInput>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Apt, Unit, etc</mat-label>
+                <input [(ngModel)]="aptUnit" name="aptUnit" matInput>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>City</mat-label>
+                <input [(ngModel)]="city" name="city" matInput>
+              </mat-form-field>
+
+              <div class="date-and-gender">
+                <mat-form-field appearance="outline">
+                  <mat-label>State</mat-label>
+                  <mat-select [(ngModel)]="selectedState" name="selectedValue">
+                    <mat-option *ngFor="let item of states" [value]="item">
+                      {{item}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Zip</mat-label>
+                  <input [(ngModel)]="zip" name="zip" matInput>
+                </mat-form-field>
+              </div>
+            </fieldset>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="reset-button">
+          <button mat-button>Reset</button>
+          <button mat-flat-button color="#f47920">Save + Continue</button>
+        </div>
+      </div>
+      <div class="form-container" [hidden]=" displaySection !== 'Confirm + Submit'">
+        <div class="save-button">
+          <button mat-flat-button color="#f47920" (click)="handleNextStep('select ordering provider')">Confirm + Save New Patient</button>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'select ordering provider'">
+      <div class="form-container">
+        <form>
+          <mat-accordion class="insurance-input">
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  My Preferred Providers
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="preferred-provider-link">
+                <mat-icon style="cursor: pointer;" matPrefix>add</mat-icon>
+                <span style="margin-left: 10px; cursor: pointer;">Miscellaneous</span>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+          <mat-form-field style="margin-top: 20px" appearance="outline">
+            <mat-label>Search Other Providers</mat-label>
+            <input [(ngModel)]="alternativeID" name="alternativeID" matInput>
+            <mat-icon style="color: #FFFFFF" matSuffix>search</mat-icon>
+          </mat-form-field>
+          <div class="provider-link">
+            <ng-container *ngIf="showAddLink; else listProviders">
+              <mat-icon style="color: #f47920; cursor: pointer;" matPrefix>add</mat-icon>
+              <span (click)="showAddLink = false" style="margin-left: 10px; color: #f47920; cursor: pointer;">View all</span>
+            </ng-container>
+          </div>
+          <div class="btn-section">
+            <button style="margin-right: 10px" mat-button (click)="handleNextStep('select patient')">Go Back</button>
+            <button style="margin-right: 10px" mat-button>Reset</button>
+            <button mat-flat-button color="#f47920" (click)="handleNextStep('enter diagnosis')">Save + Continue</button>
+          </div>
+        </form>
+      </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'enter diagnosis'">
+      <div class="form-container">
+        <form>
+          <mat-accordion class="insurance-input">
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  My Preferred Diagnoses
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="preferred-provider-link">
+                <mat-icon style="cursor: pointer;" matPrefix>add</mat-icon>
+                <span style="margin-left: 10px; cursor: pointer;">Miscellaneous</span>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+          <mat-form-field style="margin-top: 20px" appearance="outline">
+            <mat-label>Search Other Providers</mat-label>
+            <input [(ngModel)]="alternativeID" name="alternativeID" matInput>
+            <mat-icon style="color: #FFFFFF" matSuffix>search</mat-icon>
+          </mat-form-field>
+          <div class="info-container">If you cannot find a diagnosis code, enter it in the note area at the end of ordering process.</div>
+          <ng-container *ngIf="showAddLinkDiagnostics; else listDiagnostics">
+            <div class="provider-link">
+              <mat-icon style="color: #f47920; cursor: pointer;" matPrefix>add</mat-icon>
+              <span (click)="showAddLinkDiagnostics = false" style="margin-left: 10px; color: #f47920; cursor: pointer;">View all</span>
+            </div>
+          </ng-container>
+          <div class="btn-section">
+            <button style="margin-right: 10px" mat-button (click)="handleNextStep('select ordering provider')">Go Back</button>
+            <button style="margin-right: 10px" mat-button>Reset</button>
+            <button mat-flat-button color="#f47920">Save + Continue</button>
+          </div>
+        </form>
+      </div>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+      <div class="menu-container">
+        <ng-container *ngFor="let menuItem of menu">
+          <div class="menu-item-container" (click)="changeDisplaySection(menuItem.name)" [ngClass]="{'active-menu-item': menuItem.active}">
+            <img [src]="menuItem.active?menuItem.activeIcon:menuItem.icon" alt="icon">
+            <span>{{menuItem.name}}</span>
+          </div>
+        </ng-container>
+      </div>
+      <div class="form-container" [hidden]="displaySection !== 'New Patient Profile'">
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input [(ngModel)]="firstName" name="firstName" matInput>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Middle Name</mat-label>
+            <input [(ngModel)]="middleName" name="middleName" matInput>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input [(ngModel)]="lastName" name="lastName" matInput>
+          </mat-form-field>
+          <div class="date-and-gender">
+            <mat-form-field appearance="outline">
+              <mat-label>DOB</mat-label>
+              <input [(ngModel)]="dob" matInput name="dob" [matDatepicker]="picker">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Gender</mat-label>
+              <mat-select [(ngModel)]="selectedValue" name="selectedValue">
+                <mat-option *ngFor="let item of gender" [value]="item.value">
+                  {{item.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <mat-form-field appearance="outline">
+            <mat-label>Alternative ID</mat-label>
+            <input [(ngModel)]="alternativeID" name="alternativeID" matInput>
+          </mat-form-field>
+          <div class="btn-section">
+            <button mat-button>Reset</button>
+            <button mat-flat-button color="#f47920">Save + Continue</button>
+          </div>
+        </form>
+      </div>
+      <div class="form-container" [hidden]=" displaySection !== 'Contact Info'">
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label>Address</mat-label>
+            <input [(ngModel)]="address" name="address" matInput>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Apt, Unit, etc</mat-label>
+            <input [(ngModel)]="aptUnit" name="aptUnit" matInput>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>City</mat-label>
+            <input [(ngModel)]="city" name="city" matInput>
+          </mat-form-field>
+          <div class="date-and-gender">
+            <mat-form-field appearance="outline">
+              <mat-label>State</mat-label>
+              <mat-select [(ngModel)]="selectedState" name="selectedValue">
+                <mat-option *ngFor="let item of states" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Zip</mat-label>
+              <input [(ngModel)]="zip" name="zip" matInput>
+            </mat-form-field>
+          </div>
+          <mat-form-field appearance="outline">
+            <mat-label>Phone</mat-label>
+            <input [(ngModel)]="phone" name="phone" matInput placeholder="{{ '0000000000' | phone }}">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input [(ngModel)]="email" name="email" matInput>
+          </mat-form-field>
+          <div class="btn-section">
+            <button mat-button>Reset</button>
+            <button mat-flat-button color="#f47920">Save + Continue</button>
+          </div>
+        </form>
+      </div>
+      <div class="form-container" [hidden]=" displaySection !== 'Guarantor/Insurance Info'">
+        <div class="check-container">
+          <mat-checkbox [(ngModel)]="noInsurance" name="noInsurance" class="example-margin"></mat-checkbox>
+          <span>No Insurance</span>
+        </div>
+        <mat-accordion class="insurance-input">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Guarantor
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-form-field appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input [(ngModel)]="firstName" name="firstName" matInput>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input [(ngModel)]="lastName" name="lastName" matInput>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Relation</mat-label>
+              <mat-select [(ngModel)]="selectedRelation" name="selectedRelation">
+                <mat-option *ngFor="let item of relationArray" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Phone</mat-label>
+              <input matInput >
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Address</mat-label>
+              <input matInput>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Apt, Unit, etc</mat-label>
+              <input [(ngModel)]="aptUnit" name="aptUnit" matInput>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>City</mat-label>
+              <input [(ngModel)]="city" name="city" matInput>
+            </mat-form-field>
+
+            <div class="date-and-gender">
+              <mat-form-field appearance="outline">
+                <mat-label>State</mat-label>
+                <mat-select [(ngModel)]="selectedState" name="selectedValue">
+                  <mat-option *ngFor="let item of states" [value]="item">
+                    {{item}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Zip</mat-label>
+                <input [(ngModel)]="zip" name="zip" matInput>
+              </mat-form-field>
+            </div>
+
+          </mat-expansion-panel>
+          <mat-expansion-panel [disabled]="noInsurance">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Primary Insurance
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Primary Insurance Company</mat-label>
+              <mat-select>
+                <ng-container *ngFor="let insurance of insurances">
+                  <mat-option [value]="insurance?.CODE">{{insurance?.CODE}} {{insurance?.NAME}}</mat-option>
+                </ng-container>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Member ID</mat-label>
+              <input matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Group ID</mat-label>
+              <input matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Relation</mat-label>
+              <mat-select [(ngModel)]="selectedRelation" name="selectedRelation">
+                <mat-option *ngFor="let item of relationArray" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <fieldset>
+              <legend>Insured</legend>
+              <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input [(ngModel)]="firstName" name="firstName" matInput>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input [(ngModel)]="lastName" name="lastName" matInput>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Relation</mat-label>
+                <mat-select [(ngModel)]="selectedRelation" name="selectedRelation">
+                  <mat-option *ngFor="let item of relationArray" [value]="item">
+                    {{item}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Address</mat-label>
+                <input matInput>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Apt, Unit, etc</mat-label>
+                <input [(ngModel)]="aptUnit" name="aptUnit" matInput>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>City</mat-label>
+                <input [(ngModel)]="city" name="city" matInput>
+              </mat-form-field>
+
+              <div class="date-and-gender">
+                <mat-form-field appearance="outline">
+                  <mat-label>State</mat-label>
+                  <mat-select [(ngModel)]="selectedState" name="selectedValue">
+                    <mat-option *ngFor="let item of states" [value]="item">
+                      {{item}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Zip</mat-label>
+                  <input [(ngModel)]="zip" name="zip" matInput>
+                </mat-form-field>
+              </div>
+            </fieldset>
+          </mat-expansion-panel>
+          <mat-expansion-panel [disabled]="noInsurance">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Secondary insurance
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Secondary Insurance Company</mat-label>
+              <mat-select>
+                <ng-container *ngFor="let insurance of insurances">
+                  <mat-option [value]="insurance?.CODE">{{insurance?.CODE}} {{insurance?.NAME}}</mat-option>
+                </ng-container>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Member ID</mat-label>
+              <input matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Group ID</mat-label>
+              <input matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Relation</mat-label>
+              <mat-select [(ngModel)]="selectedRelation" name="selectedRelation">
+                <mat-option *ngFor="let item of relationArray" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <fieldset>
+              <legend>Insured</legend>
+              <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input [(ngModel)]="firstName" name="firstName" matInput>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input [(ngModel)]="lastName" name="lastName" matInput>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Relation</mat-label>
+                <mat-select [(ngModel)]="selectedRelation" name="selectedRelation">
+                  <mat-option *ngFor="let item of relationArray" [value]="item">
+                    {{item}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Address</mat-label>
+                <input matInput>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Apt, Unit, etc</mat-label>
+                <input [(ngModel)]="aptUnit" name="aptUnit" matInput>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>City</mat-label>
+                <input [(ngModel)]="city" name="city" matInput>
+              </mat-form-field>
+
+              <div class="date-and-gender">
+                <mat-form-field appearance="outline">
+                  <mat-label>State</mat-label>
+                  <mat-select [(ngModel)]="selectedState" name="selectedValue">
+                    <mat-option *ngFor="let item of states" [value]="item">
+                      {{item}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Zip</mat-label>
+                  <input [(ngModel)]="zip" name="zip" matInput>
+                </mat-form-field>
+              </div>
+            </fieldset>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="reset-button">
+          <button mat-button>Reset</button>
+          <button mat-flat-button color="#f47920">Save + Continue</button>
+        </div>
+      </div>
+      <div class="form-container" [hidden]=" displaySection !== 'Confirm + Submit'">
+        <div class="save-button">
+          <button mat-flat-button color="#f47920" (click)="handleNextStep('select ordering provider')">Confirm + Save New Patient</button>
+        </div>
+      </div>
+    </ng-container>
+
+  </ng-container>
+  <div class="form-output-container">
+    <div class="patient-profile">
+      <h3>Patient Profile</h3>
+      <table width="100%">
+        <tr>
+          <td>First Name :</td>
+          <td>{{firstName}}</td>
+          <td>Middle Name :</td>
+          <td>{{middleName}}</td>
+          <td>Last Name :</td>
+          <td>{{lastName}}</td>
+        </tr>
+        <tr>
+          <td>Date of Birth :</td>
+          <td>{{dob | date : 'MM/dd/yyyy'}}</td>
+          <td>Gender :</td>
+          <td>{{selectedValue}}</td>
+          <td>Alternative ID :</td>
+          <td>{{alternativeID}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="patient-profile">
+      <h3>Contact Information</h3>
+      <table width="100%">
+        <tr>
+          <td>Address :</td>
+          <td>{{address}}</td>
+          <td>Address 2 :</td>
+          <td>{{aptUnit}}</td>
+          <td>State :</td>
+          <td>{{selectedState}}</td>
+          <td>City :</td>
+          <td>{{city}}</td>
+        </tr>
+        <tr>
+          <td>Zip :</td>
+          <td>{{zip}}</td>
+          <td>Phone :</td>
+          <td>{{phone | phone}}</td>
+          <td>Email :</td>
+          <td>{{email}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="patient-profile">
+      <h3>Billing Information</h3>
+      <table width="100%">
+        <tr>
+          <td>Primary Insurance :</td>
+          <td>{{primaryInsurance}}</td>
+          <td>Member ID :</td>
+          <td>{{memberId}}</td>
+          <td>Group ID :</td>
+          <td>{{groupId}}</td>
+        </tr>
+        <tr>
+          <td>Insured Party :</td>
+          <td>{{selectedRelation}}</td>
+          <td>Last Name :</td>
+          <td>{{lastName}}</td>
+          <td>First Name :</td>
+          <td>{{firstName}}</td>
+        </tr>
+        <tr>
+          <td>Secondary Insurance :</td>
+          <td>{{secondaryInsurance}}</td>
+          <td>Member ID :</td>
+          <td>{{memberId}}</td>
+          <td>Group ID :</td>
+          <td>{{groupId}}</td>
+        </tr>
+        <tr>
+          <td>Insured Party :</td>
+          <td>{{selectedRelation}}</td>
+          <td>Last Name :</td>
+          <td>{{lastName}}</td>
+          <td>First Name :</td>
+          <td>{{firstName}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<ng-template #listProviders>
+  <div style="width: 100%; display: flex; flex-direction: column; margin-bottom: 50px; max-height: 40vh; overflow: auto">
+    <div class="provider-header">Provider</div>
+    <ng-container *ngFor="let data of providers">
+      <div class="providers">{{data}}
+        <mat-icon>add</mat-icon>
+      </div>
+    </ng-container>
+  </div>
+
+</ng-template>
+
+<ng-template #listDiagnostics>
+  <table class="preferred-diagnostics-list" width="100%">
+    <thead>
+    <tr>
+      <th>CODE</th>
+      <th>DESCRIPTION</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let item of diagnosticsList">
+      <tr>
+        <td>{{item['CODE']}}</td>
+        <td>
+          <div class="description-container">
+            {{item['DESCR']}}
+            <mat-icon>add</mat-icon>
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+</ng-template>
+

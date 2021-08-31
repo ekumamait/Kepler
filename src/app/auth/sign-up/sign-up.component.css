@@ -1,0 +1,27 @@
+.terms {
+  width: 100%;
+  margin-bottom: 5px;
+  color: #4c4c4e;
+  font-weight: 300;
+  font-size: 14px;
+  text-align: justify;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.captcha-container {
+  /*width: 100%;*/
+  /*transform:scale(0.77);*/
+  /*transform-origin:0 0;*/
+}
+
+.captcha-container-main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.login-container {
+  align-items: normal !important;
+  margin-top: 0 !important;
+}

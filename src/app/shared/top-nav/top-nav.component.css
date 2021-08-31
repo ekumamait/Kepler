@@ -1,0 +1,178 @@
+.mat-toolbar-row, .mat-toolbar-single-row {
+  padding: 0 50px;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  height: 90px;
+}
+
+.mat-toolbar.mat-primary {
+  background: #f47920;
+  color: #fff;
+  justify-content: space-between;
+}
+
+img {
+  cursor: pointer;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.smp-kepler-logo {
+  height: 5vh;
+  width: 4vw;
+}
+
+.smp-kepler-container {
+  position: absolute;
+  z-index: 10;
+  left: 40%;
+  top: 50px;
+}
+
+.top-right-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 10px 0;
+}
+
+.user-section {
+  display: flex;
+  color: #fff;
+  text-transform: capitalize;
+  font-size: 16px;
+  align-items: center;
+  margin-top: 5px;
+  font-weight: 300;
+}
+
+.user-section a {
+  display: inline-block;
+  margin-left: 10px;
+  padding-left: 10px;
+  color: #FFF;
+  font-size: 16px;
+  cursor: pointer;
+  border-left: solid 1px #FFFFFF;
+}
+
+.user-section a img {
+  margin-left: 10px;
+}
+
+.search-wrapper {
+  height: 40px;
+  width: 65%;
+}
+
+.search-section {
+  display: flex;
+  margin-top: 5px;
+  justify-content: flex-end;
+}
+
+.search-input {
+  width: 94%;
+  height: 100%;
+  padding: 0 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.mat-icon {
+  position: relative;
+  right: 35px;
+  top: 8px;
+  color: black;
+}
+
+.profile-overlay {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  background: #000000c7;
+}
+
+.profile-card {
+  position: absolute;
+  z-index: 11;
+  top: 35px;
+  right: 30px;
+  width: 385px;
+  background: white;
+  border-radius: 6px;
+}
+
+.profile-card::before {
+  z-index: 10;
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  margin-left: 0;
+  bottom: 0;
+  top: 0px;
+  right: 10px;
+  ing: border-box;
+  border: 5px solid black;
+  border-color: transparent transparent #fff #fff;
+  transform-origin: 0 0;
+  transform: rotate(135deg);
+}
+
+.menu-section {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0 10px 0;
+  border-bottom: 1px solid #dbdbdc;
+}
+
+.menu-section a {
+  color: #f47920;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.menu-section a:hover {
+  text-decoration: underline;
+}
+
+.content-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 200;
+  color: #4c4c4e;
+}
+
+.content-section > h2 {
+  border: 2px solid #f47920;
+  border-radius: 50px;
+  color: #000;
+  font-size: 16px;
+  padding: 5px 20px;
+  font-weight: 400;
+}
+
+.content-section > a {
+  color: #f47920;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.content-section > a:hover {
+  text-decoration: underline;
+}

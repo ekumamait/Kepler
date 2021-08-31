@@ -1,0 +1,57 @@
+.mat-card {
+  padding: 68px 16px 16px 16px;
+  border-radius: 30px;
+  width: 360px;
+  margin-top: 6vh;
+}
+
+.mat-card-title {
+  font-size: 24px;
+  font-weight: 400;
+  color: #4c4c4e;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  font-family: 'Source Sans Pro', sans-serif
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-flat-button.mat-primary {
+  background-color: #3699ff;
+}
+
+.smp-kepler-container {
+  display: flex;
+  position: absolute;
+  align-content: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  left: 32%;
+  top: -28px;
+}
+
+.auth-container {
+  display: flex;
+  margin-left: 8vw;
+}
+
+.kepler-text {
+  display: flex;
+  align-items: center;
+  margin-left: 100px;
+  color: white;
+  font-size: 16px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 20px;
+  text-align: right;
+}
+
+.kepler-text p {
+  text-align: right;
+}

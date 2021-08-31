@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>switch locations</h1>
+<div mat-dialog-content>
+  <div class="check-container">
+    <mat-checkbox class="example-margin"></mat-checkbox>
+    <span>Make my Default Location</span>
+  </div>
+  <mat-form-field appearance="outline">
+    <mat-label>Select Another Location</mat-label>
+    <mat-select>
+      <ng-container *ngFor="let location of locations">
+        <mat-option [value]="location?.id">{{location?.id}} {{location?.name}}</mat-option>
+      </ng-container>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>

@@ -1,0 +1,270 @@
+.create-patient-container {
+  display: flex;
+}
+
+.menu-container {
+  flex-grow: 0;
+  flex-direction: column;
+  background: #4c4c4e;
+}
+
+.form-container {
+  min-height: 730px;
+  background: rgb(106, 106, 108);
+  padding: 20px;
+  width: 30%;
+}
+
+.form-output-container {
+  flex-grow: 2;
+  min-height: 730px;
+  background: #dbdbdc;
+  padding: 20px;
+  width: 50%;
+}
+
+.menu-item-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: solid 1px #5e5e5e;
+  width: 190px;
+  height: 140px;
+}
+
+.menu-item-container > img {
+  height: 31px;
+  width: 31px;
+}
+
+.menu-item-container > span {
+  font-size: 14px;
+  color: #d4d4d5;
+  margin-top: 5px;
+}
+
+.active-menu-item {
+  background: rgb(106, 106, 108);
+}
+
+.active-menu-item > span {
+  color: #f47920 !important;
+}
+
+.date-and-gender {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.form-container > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-and-gender mat-form-field {
+  width: 45%;
+}
+
+:host ::ng-deep .mat-form-field-label {
+  color: #cac9c9;
+}
+
+:host ::ng-deep .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-datepicker-toggle-default-icon, :host ::ng-deep .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-datepicker-toggle-default-icon {
+  color: #cac9c9;
+}
+
+input.mat-input-element {
+  color: white;
+}
+
+.insurance-input input.mat-input-element {
+  color: black;
+}
+.save-button > .mat-flat-button {
+  position: absolute;
+  background: #f47920;
+  color: white;
+  position: absolute;
+  bottom: 0px;
+  margin-left: 70px;
+}
+:host ::ng-deep .insurance-input .mat-select-value-text {
+  color: black;
+}
+
+:host ::ng-deep .mat-select-value-text {
+  color: white;
+}
+
+.reset-button {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.reset-button > .mat-button {
+  color: #f47920;
+}
+
+.reset-button > .mat-flat-button {
+  background: #f47920;
+  color: white;
+}
+
+.btn-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.btn-section > .mat-button {
+  color: white;
+}
+
+.btn-section > .mat-flat-button {
+  background: #f47920;
+  color: white;
+}
+
+.patient-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.patient-profile > h3 {
+  border-bottom: 2px solid gray;
+}
+
+.patient-profile > table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td {
+  padding: 10px 0;
+}
+
+td:nth-child(odd) {
+  font-weight: bolder;
+}
+
+.check-container {
+  margin-bottom: 10px;
+}
+
+.check-container > span {
+  color: #fff;
+}
+
+.example-margin {
+  margin: 0 10px 0 0;
+}
+
+:host ::ng-deep mat-checkbox .mat-checkbox-frame {
+  border-color: #ffffff94;
+}
+
+:host ::ng-deep mat-expansion-panel .mat-expansion-panel-body {
+  padding: 0 16px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+fieldset {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #a3a3a3;
+}
+
+legend {
+  font-size: 16px;
+  padding: 5px;
+  text-transform: uppercase;
+  width: auto;
+  color: #333;
+}
+
+.preferred-provider-link, .provider-link {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+
+.preferred-provider-link:hover {
+  background: #dbdbdc;
+}
+
+.provider-header {
+  font-size: 15px;
+  color: black;
+  background: #bfbfbf;
+  padding: 0.4166em;
+}
+
+.provider-header ~ div {
+  font-size: 15px;
+  padding: 0.4166em;
+  background: #fff;
+  border-bottom: 1px solid #bfbfbf;
+  color: #4c4c4e;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.provider-header ~ div:hover {
+  background: #f47920;
+  color: #FFFFFF;
+}
+
+.provider-header ~ div:hover > mat-icon {
+  color: #FFFFFF;
+}
+
+.info-container {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.preferred-diagnostics-list {
+  background: #FFFFFF;
+  border-collapse: collapse;
+  color: #4c4c4e;
+  margin-bottom: 10px;
+}
+.preferred-diagnostics-list th{
+  text-align: left;
+  padding: 5px;
+  font-weight: 400;
+}
+
+.preferred-diagnostics-list thead tr {
+  background: #bfbfbf;
+}
+
+.preferred-diagnostics-list td {
+  padding: 5px;
+  font-weight: 300;
+}
+
+.preferred-diagnostics-list td, .preferred-diagnostics-list th {
+  border: 1px solid #4c4c4e;;
+}
+
+.preferred-diagnostics-list .description-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+
+

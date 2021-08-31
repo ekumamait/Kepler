@@ -1,0 +1,42 @@
+<app-wrapper>
+  <div class="login-container">
+    <app-card-wrapper [cardTitle]="cardTitle" [buttonLabel]="buttonLabel">
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="John">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Doe">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="johndoe@mail.com">
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
+      <span class="terms">
+      This online portal is for ordering healthcare providers only.
+      <br>Please contact your own provider's office for a copy of your results OR if you are a patient from the airport testing program, please call Doctors Test Centers at 312-561-9339.
+    </span>
+      <div class="captcha-container-main">
+        <div class="captcha-container">
+          <re-captcha
+            (resolved)="resolved($event)"
+            (error)="onError($event)"
+            errorMode="handled"
+            siteKey="6LeCgnEbAAAAACgbeiyYWO7YAC0EkvlstIcf_vHI"
+          ></re-captcha>
+        </div>
+      </div>
+      <div (click)="navigate('/login')" class="login-form-link" links>
+        <span>Have an account? Log In</span>
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </div>
+      <div class="login-form-link" links>
+        <mat-icon>keyboard_arrow_left</mat-icon>
+        <span>Take me to SimpleLaboratories.com</span>
+      </div>
+    </app-card-wrapper>
+  </div>
+</app-wrapper>
+

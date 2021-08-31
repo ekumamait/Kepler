@@ -1,0 +1,201 @@
+.dashboard-container {
+  padding: 10px 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.view-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.view-button span {
+  font-size: 21px;
+  padding-left: 12px;
+  font-weight: 500;
+  color: black;
+}
+
+.right-section-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.print-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.print-buttons img {
+  width: 30px;
+  height: 30px;
+}
+
+.print-buttons span {
+  font-size: 10.5px;
+  color: #4c4c4e;
+  font-weight: 400;
+}
+
+.tables-container {
+  margin: 20px 0;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.nameCell {
+  color: orange;
+}
+
+.box {
+  background: url(https://kepler.simplelaboratories.com/images/blue-border.jpg) 16px bottom repeat-y;
+  position: relative;
+  z-index: 1;
+}
+
+.box.last {
+  background: url(https://kepler.simplelaboratories.com/images/blue-border.jpg) 16px bottom no-repeat;
+  position: relative;
+  z-index: 1;
+}
+
+.clearfix:before, .clearfix:after {
+  content: '\0020';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.middle-left {
+  float: left;
+  width: 20px;
+}
+
+.blue-arrow {
+  position: relative;
+  z-index: 1;
+}
+
+.blue-arrow i.active {
+  background: url(https://kepler.simplelaboratories.com/images/down-arrow-blue.png) center top no-repeat !important;
+}
+
+.blue-arrow i {
+  background: url(https://kepler.simplelaboratories.com/images/left-arrow-blue.png) center top no-repeat;
+  height: 32px;
+  width: 32px;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.middle-right {
+  float: right;
+  width: 95%;
+}
+
+.table-title {
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.table-title h3 {
+  float: left;
+  width: 75%;
+  line-height: 32px;
+  text-transform: uppercase;
+  font-size: 1.6em;
+}
+
+.dbtitles {
+  cursor: pointer;
+  width: auto !important;
+}
+
+h3 {
+  color: #4c4c4e;
+  margin-bottom: 0;
+}
+
+h3:hover {
+  color:#f47920;
+}
+
+*:before, *:after {
+  box-sizing: border-box;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix:before, .clearfix:after {
+  content: '\0020';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.table-space {
+  height: 10vh;
+  background: #4c4c4e;
+}
+
+.example-margin {
+  margin: 0 10px;
+}
+
+.data-table {
+  width: 100%;
+}
+
+td:last-child , th:last-child {
+  word-wrap: break-word;
+  width: 550px;
+}
+
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+  padding: 15px;
+  border: 1px solid rgba(74, 66, 66,0.12);
+}
+
+.mat-elevation-z8 {
+  margin-bottom: 20px;
+}
+
+:host ::ng-deep .mat-table thead {
+  background: #bfbfbf;
+}
+
+.mat-row:hover {
+  background: #f47920;
+  cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+  color: black;
+}
+
+.last-column {
+  width: 30vw;
+}

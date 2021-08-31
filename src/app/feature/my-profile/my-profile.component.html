@@ -1,0 +1,126 @@
+<div class="my-profile-container">
+    <ng-container [ngSwitch]="step">
+      <ng-container *ngSwitchCase="'select patient'">
+        <div class="menu-container">
+          <ng-container *ngFor="let menuItem of menu">
+            <div class="menu-item-container" (click)="changeDisplaySection(menuItem.name)" [ngClass]="{'active-menu-item': menuItem.active}">
+              <img [src]="menuItem.active?menuItem.activeIcon:menuItem.icon" alt="icon">
+              <span>{{menuItem.name}}</span>
+            </div>
+          </ng-container>
+        </div>
+        <div class="form-container" [hidden]="displaySection !== 'Edit Profile'">
+          <form>
+            <mat-form-field appearance="outline">
+              <mat-label>Name</mat-label>
+              <input [(ngModel)]="name" name="name" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Preferred Name / Nickname</mat-label>
+              <input [(ngModel)]="nickName" name="nickName" matInput>
+            </mat-form-field>
+            <div class="btn-section">
+              <button mat-button>Reset</button>
+              <button mat-flat-button color="#f47920">Save + Continue</button>
+            </div>
+          </form>
+        </div>
+        <div class="form-container" [hidden]=" displaySection !== 'Contact Info'">
+          <form>
+            <mat-form-field appearance="outline">
+              <mat-label>Address</mat-label>
+              <input [(ngModel)]="address" name="address" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Apt, Unit, etc</mat-label>
+              <input [(ngModel)]="aptUnit" name="aptUnit" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>City</mat-label>
+              <input [(ngModel)]="city" name="city" matInput>
+            </mat-form-field>
+            <div class="date-and-gender">
+              <mat-form-field appearance="outline">
+                <mat-label>State</mat-label>
+                <mat-select [(ngModel)]="selectedState" name="selectedValue">
+                  <mat-option *ngFor="let item of states" [value]="item">
+                    {{item}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Zip</mat-label>
+                <input [(ngModel)]="zip" name="zip" matInput>
+              </mat-form-field>
+            </div>
+            <mat-form-field appearance="outline">
+              <mat-label>Phone</mat-label>
+              <input [(ngModel)]="phone" name="phone" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input [(ngModel)]="email" name="email" matInput>
+            </mat-form-field>
+            <div class="btn-section">
+              <button mat-button>Reset</button>
+              <button mat-flat-button color="#f47920">Save + Continue</button>
+            </div>
+          </form>
+        </div>
+        <div class="form-container" [hidden]=" displaySection !== 'Change Password'">
+            <form>
+                <mat-form-field appearance="outline">
+                <mat-label>New Password</mat-label>
+                <input [(ngModel)]="password" name="password" matInput>
+                </mat-form-field>
+            </form>
+            <div class="save-button">
+                <button mat-flat-button color="#f47920" (click)="handleNextStep('select ordering provider')">Confirm + Save New Patient</button>
+            </div>
+        </div>
+      </ng-container>
+    <div class="form-output-container">
+      <div class="patient-profile">
+        <h3>Patient Profile</h3>
+        <table width="100%">
+          <tr>
+            <td>Name :</td>
+            <td>{{name}}</td>
+            <td>Preferred Name / Nickname :</td>
+            <td>{{nickName}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="patient-profile">
+        <h3>Contact Information</h3>
+        <table width="100%">
+          <tr>
+            <td>Address :</td>
+            <td>{{address}}</td>
+            <td>Address 2 :</td>
+            <td>{{aptUnit}}</td>
+            <td>State :</td>
+            <td>{{selectedState}}</td>
+            <td>City :</td>
+            <td>{{city}}</td>
+          </tr>
+          <tr>
+            <td>Zip :</td>
+            <td>{{zip}}</td>
+            <td>Phone :</td>
+            <td>{{phone}}</td>
+            <td>Email :</td>
+            <td>{{email}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="patient-profile">
+        <h3>Password</h3>
+        <table width="100%">
+          <tr>
+            <td>New Password :</td>
+            <td>{{password}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>

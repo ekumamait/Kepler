@@ -1,0 +1,19 @@
+version: '3.0'
+services:
+  ui:
+    build:
+      context: .
+      dockerfile: DockerfileUI
+    container_name: smp-kepler-ui
+    volumes:
+      - .:/src/app
+      - /src/app/node_modules
+    image: smp-kepler/ui
+    networks:
+      - smp-kepler
+    ports:
+      - '8080:8080'
+
+networks:
+  smp-kepler:
+    driver: bridge

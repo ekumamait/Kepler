@@ -1,0 +1,66 @@
+.mat-dialog-title {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 22px;
+  padding: 10px 20px;
+  border-radius: 4px 4px 0 0;
+}
+
+.mat-dialog-content {
+  width: 500px;
+}
+
+.minor-header {
+  font-weight: bold;
+}
+
+.search-wrapper {
+  position: relative;
+  width: fit-content;
+  margin-bottom: 10px;
+}
+
+input[type='text'] {
+  width: 475px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid #f47920;
+}
+
+.mat-dialog-actions {
+  text-transform: uppercase;
+  float: right;
+  color: white;
+}
+
+.close {
+  background-color: transparent;
+  float: right;
+}
+
+input:focus{
+  outline: none;
+}
+
+.mat-icon {
+  font-size: 15px;
+  margin-top: 6px;
+}
+
+.mat-success {
+  background-color: #f47920;
+  color: #fff;
+}
+
+p {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #4c4c4e;
+  margin-bottom: 10px;
+}
+
+.cancel-button {
+  background-color: #e0e0e0;
+  color: #777;
+}

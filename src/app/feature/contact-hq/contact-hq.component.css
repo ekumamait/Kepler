@@ -1,0 +1,15 @@
+.mat-dialog-title {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 22px;
+  padding: 10px 20px;
+  border-radius: 4px 4px 0 0;
+}
+
+.mat-dialog-content {
+  width: 500px;
+}
+
+.minor-header {
+  font-weight: bold;
+}

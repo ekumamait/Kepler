@@ -1,0 +1,33 @@
+.footer-container {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 1);
+  background: rgba(255, 255 ,255, 0.9);
+  display: flex;
+}
+
+.footer-container > div {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: flex-start;
+  padding: 10px;
+  align-items: center;
+}
+
+mat-icon:hover {
+  color: #f47920;
+  cursor: pointer;
+}
+
+.footer-text {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.footer-text p {
+  margin: 0;
+}

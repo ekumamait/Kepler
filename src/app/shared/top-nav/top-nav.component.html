@@ -1,0 +1,39 @@
+<mat-toolbar color="primary">
+  <img src="/assets/smp-kepler-logo.png" (click)="onShowDrawer()" alt="smp-kepler-logo"/>
+  <div *ngIf="display" class="top-right-container">
+    <div class="user-section">
+      <span>E21 (SIMPLE LABS - MISCELLANEOUS )</span>
+      <span (click)="displayPopup=true" class="show-header-links">
+        <a>
+          Hello,
+          <span>Zlatko Jovanovic</span>
+          <img src="https://kepler.simplelaboratories.com/images/down-arrow.png">
+        </a>
+      </span>
+    </div>
+    <div class="search-section">
+      <div class="search-wrapper">
+        <input class="search-input" placeholder="Patient Search (Name, DOB, etc...)">
+        <mat-icon matSuffix>search</mat-icon>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="display" class="smp-kepler-container">
+    <img src="https://kepler.simplelaboratories.com/images/simple-img.png" alt="logo">
+  </div>
+</mat-toolbar>
+
+<div *ngIf="displayPopup" class="profile-card">
+  <div class="menu-section">
+    <a href="#">Preferences</a>
+    <a routerLink="/profile">My Profile</a>
+    <a href="#">Logout</a>
+  </div>
+  <div class="content-section">
+    <h3 class="title">You’re currently logged into:</h3>
+    <h2>E21 / SIMPLE LABS - MISCELLANEOUS</h2>
+    <a (click)="openSwitchLocationsDialog()">Switch Locations</a>
+    <a (click)="openRequestAccessDialog()">Request Access</a>
+  </div>
+</div>
+<div *ngIf="displayPopup" (click)="showPopup()" class="profile-overlay"></div>

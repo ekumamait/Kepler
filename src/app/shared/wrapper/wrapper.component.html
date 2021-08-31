@@ -1,0 +1,5 @@
+<app-top-nav [display]="display" (showDrawer)="onShowDrawer($event)"></app-top-nav>
+<app-side-nav [display]="display" [displayMenuContainer]="displayMenuContainer" [activeMenuTitle]="activeMenuTitle" [showDrawer]="showDrawer">
+  <ng-content></ng-content>
+  <app-footer-nav *ngIf="!display"></app-footer-nav>
+</app-side-nav>
